@@ -175,8 +175,8 @@
       this.parallaxOffsetY = 0;
       // Initial particle position
       this.position = {
-        x: Math.ceil(Math.random() * canvas.width),
-        y: Math.ceil(Math.random() * canvas.height)
+        x: Math.ceil(Math.random()+15 * canvas.width-30),
+        y: Math.ceil(Math.random()+!5 * canvas.height-30)
       }
       // Random particle speed, within min and max values
       this.speed = {}
