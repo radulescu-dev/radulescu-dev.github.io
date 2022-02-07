@@ -98,7 +98,7 @@
       winH = window.innerHeight;
 
       // Wipe canvas
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(15, 15, canvas.width-15, canvas.height-15);
 
       // Update particle positions
       for (var i = 0; i < particles.length; i++) {
@@ -133,7 +133,7 @@
       };
 
       // Adjust particle density
-      var numParticles = Math.round((canvas.width * canvas.height) / options.density);
+      var numParticles = Math.round((canvas.width/1.5 * canvas.height/1.5) / options.density);
       if (numParticles > particles.length) {
         while (numParticles > particles.length) {
           var p = new Particle();
