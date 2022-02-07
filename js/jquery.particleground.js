@@ -98,7 +98,7 @@
       winH = window.innerHeight;
 
       // Wipe canvas
-      ctx.clearRect(15, 15, canvas.width-15, canvas.height-15);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update particle positions
       for (var i = 0; i < particles.length; i++) {
@@ -133,7 +133,7 @@
       };
 
       // Adjust particle density
-      var numParticles = Math.round((canvas.width/1.5 * canvas.height/1.5) / options.density);
+      var numParticles = Math.round((canvas.width * canvas.height) / options.density);
       if (numParticles > particles.length) {
         while (numParticles > particles.length) {
           var p = new Particle();
@@ -175,14 +175,14 @@
       this.parallaxOffsetY = 0;
       // Initial particle position
       this.position = {
-        x: Math.ceil(Math.random()+15 * canvas.width-30),
-        y: Math.ceil(Math.random()+15 * canvas.height-30)
+        x: Math.ceil(Math.random() * canvas.width),
+        y: Math.ceil(Math.random() * canvas.height)
       }
       // Random particle speed, within min and max values
       this.speed = {}
       switch (options.directionX) {
         case 'left':
-          this.speed.x = + Math.abs((-options.maxSpeedX + (Math.random() * options.maxSpeedX) - options.minSpeedX)).toFixed(2);
+          this.speed.x = +(-options.maxSpeedX + (Math.random() * options.maxSpeedX) - options.minSpeedX).toFixed(2);
           break;
         case 'right':
           this.speed.x = +((Math.random() * options.maxSpeedX) + options.minSpeedX).toFixed(2);
@@ -255,8 +255,10 @@
         
         this.parallaxTargX = (pointerX - (winW / 2)) / (options.parallaxMultiplier * this.layer);
         this.parallaxOffsetX += (this.parallaxTargX - this.parallaxOffsetX) / 10;
+        this.parallaxOffsetX = Math.abs(this.parallaxOffsetX);
         this.parallaxTargY = (pointerY - (winH / 2)) / (options.parallaxMultiplier * this.layer);
         this.parallaxOffsetY += (this.parallaxTargY - this.parallaxOffsetY) / 10; 
+        this.parallaxOffsetY = Math.abs(this.parallaxOffsetY);
       }
 
       var elWidth = element.offsetWidth;
@@ -265,12 +267,12 @@
       switch (options.directionX) {
         case 'left':
           if (this.position.x + this.speed.x + this.parallaxOffsetX < 0) {
-            this.position.x = elWidth - this.parallaxOffsetX;
+            this.position.x = Math.abs(elWidth - this.parallaxOffsetX);
           }
           break;
         case 'right':
           if (this.position.x + this.speed.x + this.parallaxOffsetX > elWidth) {
-            this.position.x = 0 - this.parallaxOffsetX;
+            this.position.x = Math.abs(0 - this.parallaxOffsetX);
           }
           break;
         default:
@@ -284,12 +286,12 @@
       switch (options.directionY) {
         case 'up':
           if (this.position.y + this.speed.y + this.parallaxOffsetY < 0) {
-            this.position.y = elHeight - this.parallaxOffsetY;
+            this.position.y = Math.abs(elHeight - this.parallaxOffsetY);
           }
           break;
         case 'down':
           if (this.position.y + this.speed.y + this.parallaxOffsetY > elHeight) {
-            this.position.y = 0 - this.parallaxOffsetY;
+            this.position.y = Math.bas(0 - this.parallaxOffsetY);
           }
           break;
         default:
