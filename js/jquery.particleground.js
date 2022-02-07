@@ -182,7 +182,7 @@
       this.speed = {}
       switch (options.directionX) {
         case 'left':
-          this.speed.x = +(-options.maxSpeedX + (Math.random() * options.maxSpeedX) - options.minSpeedX).toFixed(2);
+          this.speed.x = + Math.abs((-options.maxSpeedX + (Math.random() * options.maxSpeedX) - options.minSpeedX).toFixed(2));
           break;
         case 'right':
           this.speed.x = +((Math.random() * options.maxSpeedX) + options.minSpeedX).toFixed(2);
