@@ -8,21 +8,39 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" type="text/css">
     <script type="text/javascript" src="js/jquery.particleground.js"></script>
-    <script type="text/javascript" src="js/demo.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
+  <body class="bg-[#202124]">
     <div id="particles">
-      <div id="intro">
-          <h2 style="font-family: 'Syncopate', sans-serif; font-weight: 10;">RADULESCUDEV</h2>
-          <hr style="width: 50%; background-color: #E83951; border-color: #E83951;">
-          <a href="mailto:Alex@Radulescu.dev" style="color: white;"><i class="fas fa-envelope" style="font-size: 2em;"></i></a>
-          &nbsp
-          <a href="https://trailblazer.me/id/aradulescu" style="color: white;"><i class="fab fa-salesforce" style="font-size: 2em;"></i></a>
-          &nbsp
-          <a href="https://github.com/allude" style="color: white;"><i class="fab fa-github" style="font-size: 2em;"></i></a>
-          &nbsp
-          <a href="https://twitter.com/AlludeDev" style="color: white;"><i class="fab fa-twitter" style="font-size: 2em;"></i></a>
+      <div class="grid grid-cols-1 divide-y	absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 text-center">
+        <div> 
+           <h2 class="font-bold text-3xl text-white w-4/6 text-center uppercase">RadulescuDev</h2>
+        </div>
+        <div class="grid grid-cols-4 pt-1">
+          <div>
+            <a href="mailto:Alex@Radulescu.dev" style="color: white;"><i class="fas fa-envelope" style="font-size: 2.5em;"></i></a>
+          </div>
+          <div>
+            <a href="https://trailblazer.me/id/aradulescu" style="color: white;"><i class="fab fa-salesforce" style="font-size: 2.5em;"></i></a>
+          </div>
+          <div>
+            <a href="https://github.com/allude" style="color: white;"><i class="fab fa-github" style="font-size: 2.5em;"></i></a>
+          </div>
+          <div>
+            <a href="https://twitter.com/AlludeDev" style="color: white;"><i class="fab fa-twitter" style="font-size: 2.5em;"></i></a>
+          </div>
+        </div>
       </div>
     </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        particleground(document.getElementById('particles'), {
+          dotColor: '#5cbdaa',
+          lineColor: '#5cbdaa'
+        });
+        var intro = document.getElementById('intro');
+        intro.style.marginTop = - intro.offsetHeight / 2 + 'px';
+      }, false);
+    </script>
   </body>
 </html>
